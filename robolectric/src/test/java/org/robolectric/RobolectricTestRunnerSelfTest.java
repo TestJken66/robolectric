@@ -95,7 +95,7 @@ public class RobolectricTestRunnerSelfTest {
     assertThat(onTerminateCalledFromMain).isTrue();
   }
 
-  private static Boolean onTerminateCalledFromMain = null;
+  private static boolean onTerminateCalledFromMain = false;
 
   public static class MyTestApplication extends Application {
     private boolean onCreateWasCalled;
@@ -108,7 +108,7 @@ public class RobolectricTestRunnerSelfTest {
     @Override
     public void onTerminate() {
       onTerminateCalledFromMain =
-          Boolean.valueOf(Looper.getMainLooper().getThread() == Thread.currentThread());
+          Looper.getMainLooper().getThread() == Thread.currentThread();
     }
   }
 }
